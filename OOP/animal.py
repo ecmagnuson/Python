@@ -1,3 +1,5 @@
+import sys
+
 class Animal:
     
     def __init__(self, species, age, weight):
