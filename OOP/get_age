@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+#This is a shebang that needs to be on the first line.
+#This file is not a .py file, yet can be run as one because of the shebang
+#The shebang points towards the PATH of python such that we dont need to run
+#python 3 get_age.python.
+#Can just use "chmod +x get_age" to make executable 
+#then run with ./get_age (if in directory)
+#When you type ls in the directory, the file will have green letters because it is executable.
+
+#Likewise, "chmod -x get_age" will remove executable.
+
+from datetime import datetime
+import sys
+
+today = datetime.today()
+
+class Timefrom():
+
+    def __init__(self, name, year, month, day):
+        self.name = name
+        self.year = year
+        self.month = month
+        self.day = day
+
+    def get_age(self):
+        print(f'{self.name} is: ')
+        if today.month >= self.month:    
+            print(f'{abs(today.year - self.year)} years')
+        elif today.month < self.month:
+            print(f'{abs(today.year - self.year - 1)} years')
+        print(f'{abs(today.month -  self.month)} months')
+        print(f'{abs(today.day -  self.day)} days old')
+
+if len(sys.argv) != 5:
+    print('Expecting 4 arguments -> name, year, month, day')
+else:
+    person = Timefrom(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))
+    person.get_age()
